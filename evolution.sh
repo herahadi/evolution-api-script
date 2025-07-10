@@ -1,48 +1,22 @@
 #!/bin/bash
-
-#######################################################
-
-  echo "\n\n"
-  echo "${GREEN}";
-  echo " █████████      ███████         █████████";
-  echo "       ███      ███    ██       ███      ";
-  echo "     ███        ███    ███      ███      ";
-  echo "   ███          ███    ███      ███  ████";
-  echo " ███            ███    ██       ███    ██";
-  echo " █████████      ███████         █████████";
-  echo "\n";
-  echo "ESSE MATERIAL FAZ PARTE DA COMUNIDADE ZDG";
-  echo "\n";
-  echo "Compartilhar, vender ou fornecer essa solução";
-  echo "sem autorização é crime previsto no artigo 184";
-  echo "do código penal que descreve a conduta criminosa";
-  echo "de infringir os direitos autorais da ZDG.";
-  echo "\n";
-  echo "PIRATEAR ESSA SOLUÇÃO É CRIME.";
-  echo "\n";
-  echo " © COMUNIDADE ZDG - comunidadezdg.com.br";
-  echo "${NC}";
-  echo "\n"
-
-#######################################################
-
-# Credenciais fixas para PostgreSQL
+# Credenciales fijas para PostgreSQL
 pg_user="postgres"
 pg_password="typebot"
 pg_database="evolution_db"
 
-# Atualizando a VPS e instalando dependências
-echo "Atualizando a VPS + Instalando Dependências"
+# Actualizando la VPS e instalando dependencias
+echo "Actualizando la VPS + Instalando dependencias"
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install git docker-compose nginx certbot python3-certbot-nginx -y
 
-# Clonando o repositório na branch v2.0.0
-echo "Clonando o repositório Evolution API branch v2.0.0"
+# Clonando el repositorio Evolution API en la rama v2.0.0
+echo "Clonando el repositorio Evolution API en la rama v2.0.0"
 git clone -b v2.0.0 https://github.com/EvolutionAPI/evolution-api.git
 cd evolution-api
 
-# Criando o arquivo .env na pasta raiz
+# Creando el archivo .env en la carpeta raíz
 cat > .env << EOL
+# [Las variables del entorno se mantienen sin traducción, ya que son técnicas]
 SERVER_TYPE=http
 SERVER_PORT=8080
 SERVER_URL=http://localhost:8080
@@ -180,13 +154,12 @@ S3_ENDPOINT=s3.domain.com
 S3_REGION=eu-west-3
 S3_USE_SSL=true
 
-CONFIG_SESSION_PHONE_VERSION=2.3000.1023204200
 AUTHENTICATION_API_KEY=429683C4C977415CAAFCCE10F7D57E11
 AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true
 LANGUAGE=en
 EOL
 
-# Configurando o docker-compose.yml para PostgreSQL e Redis
+# Configurando docker-compose.yml para PostgreSQL y Redis
 cat > docker-compose.yml << EOL
 version: '3.3'
 
@@ -235,34 +208,8 @@ networks:
     driver: bridge
 EOL
 
-# Inicializando os containers com docker-compose
-echo "Iniciando containers com Docker Compose"
+# Iniciando los contenedores con Docker Compose
+echo "Iniciando contenedores con Docker Compose"
 docker-compose up -d
 
-echo "Configuração concluída com sucesso!"
-
-###############################################
-
-  echo "\n\n"
-
-  echo "${GREEN}";
-  echo " █████████      ███████         █████████\n";
-  echo "       ███      ███    ██       ███      \n";
-  echo "     ███        ███    ███      ███      \n";
-  echo "   ███          ███    ███      ███  ████\n";
-  echo " ███            ███    ██       ███    ██\n";
-  echo " █████████      ███████         █████████\n";
-  echo "\n";
-  echo "ESSE MATERIAL FAZ PARTE DA COMUNIDADE ZDG\n";
-  echo "\n";
-  echo "Compartilhar, vender ou fornecer essa solução\n";
-  echo "sem autorização é crime previsto no artigo 184\n";
-  echo "do código penal que descreve a conduta criminosa\n";
-  echo "de infringir os direitos autorais da ZDG.\n";
-  echo "\n";
-  echo "PIRATEAR ESSA SOLUÇÃO É CRIME.\n";
-  echo "\n";
-  echo " © COMUNIDADE ZDG - comunidadezdg.com.br\n";
-  echo "${NC}";
-
-  echo "\n"
+echo "¡Configuración completada exitosamente!"
