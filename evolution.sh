@@ -19,7 +19,7 @@ cat > .env << EOL
 # [Las variables del entorno se mantienen sin traducción, ya que son técnicas]
 SERVER_TYPE=http
 SERVER_PORT=8080
-SERVER_URL=http://localhost:8080
+SERVER_URL=https://domainkamu.com
 
 SENTRY_DSN=
 
@@ -34,7 +34,7 @@ LOG_BAILEYS=error
 DEL_INSTANCE=false
 
 DATABASE_PROVIDER=postgresql
-DATABASE_CONNECTION_URI=postgresql://${pg_user}:${pg_password}@postgres:5432/${pg_database}?schema=public
+DATABASE_CONNECTION_URI=postgresql://${pg_user}:${pg_password}@postgres:5432/${pg_database}?schema=public&sslmode=disable
 DATABASE_CONNECTION_CLIENT_NAME=evolution_exchange
 
 DATABASE_SAVE_DATA_INSTANCE=true
